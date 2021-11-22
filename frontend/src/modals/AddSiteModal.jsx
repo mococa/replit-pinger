@@ -52,7 +52,10 @@ function AddSiteModal({ onClose, setSites }) {
           variant="contained"
           onClick={() => {
             Site.add({ name, url, owner })
-              .then(({ data }) => setSites(data))
+              .then(({ data }) => {
+                setSites(data);
+                onClose();
+              })
               .catch((error) => {
                 console.error({ error });
                 alert(error.response?.data?.message || "Ocorreu um erro");

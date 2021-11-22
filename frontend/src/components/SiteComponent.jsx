@@ -19,7 +19,7 @@ function SiteComponent({ name, url, owner = "", id, setSites }) {
           <b>Nome:</b>
           {` ${name}`}
         </Typography>
-        <Typography>
+        <Typography component="a" href={url} target="_blank">
           <b>URL:</b>
           {` ${url}`}
         </Typography>
