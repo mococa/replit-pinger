@@ -1,12 +1,9 @@
-const connection = require("./db-config");
-const PORT = process.env.PORT || 3000;
+const { router } = require("../routes/index");
+const cors = require("cors");
+const express = require("express");
 const configure_express = (app) => {
-  app.get("/", (req, res) => {
-    res.send("Hello world");
-  });
-  app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT} 🚀`);
-    connection();
-  });
+  app.use(express.json());
+  app.use(cors());
+  app.use(router);
 };
 module.exports = configure_express;

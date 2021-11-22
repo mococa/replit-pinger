@@ -6,6 +6,7 @@ const url = prod ? production_url : local_api;
 
 const Axios = axios.create({
   baseURL: url,
+  crossDomain: true,
 });
 export class request {
   static get(path) {
