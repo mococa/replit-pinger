@@ -8,6 +8,6 @@ export class Site {
     return request.post("/sites", { name, url, owner });
   }
   static async delete(id) {
-    return request.delete("/sites", id);
+    return request.delete("/sites/" + id);
   }
 }
