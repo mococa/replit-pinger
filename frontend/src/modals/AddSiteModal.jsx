@@ -4,14 +4,14 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
-  Button
+  Button,
 } from "@mui/material";
 import React, { useState } from "react";
 import { Site } from "../api/site";
 
 function AddSiteModal({ onClose, setSites }) {
   const [name, setName] = useState("");
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState("https://");
   const [owner, setOwner] = useState(undefined);
 
   return (
@@ -30,6 +30,8 @@ function AddSiteModal({ onClose, setSites }) {
         <TextField
           variant="outlined"
           label="URL"
+          placeholder="https://"
+          defaultValue="https://"
           required
           margin="dense"
           fullWidth
@@ -52,7 +54,7 @@ function AddSiteModal({ onClose, setSites }) {
             Site.add({ name, url, owner })
               .then(({ data }) => setSites(data))
               .catch((error) => {
-                console.error({error})
+                console.error({ error });
                 alert(error.response?.data?.message || "Ocorreu um erro");
               });
           }}
